@@ -1,3 +1,19 @@
+// navbar animation start
+const getAnimate = () => {
+  const tl = gsap.timeline();
+  tl.from("nav", {
+    y: -25,
+    duration: 1.5,
+    opacity: 0,
+    delay: 0.2,
+    scale: 0.5,
+    ease: "power3.out",
+  });
+};
+
+// navbar animation end
+
+// loader animation start
 document.addEventListener("DOMContentLoaded", function () {
   // Set initial state for progress bar
   gsap.set("#progress-bar", { width: 0 });
@@ -75,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
           width: step.to + "%",
           duration: step.duration,
           ease: "power1.out",
-          // Force hardware acceleration
           force3D: true,
         },
         "+=0.1"
@@ -112,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const mainContent = document.querySelector("main");
         if (mainContent) {
           mainContent.classList.remove("hidden"); // Show main content
+          getAnimate(); // Trigger navbar animation
           gsap.from(mainContent, {
             opacity: 0,
             y: 30,
@@ -123,3 +139,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// loader animation end
